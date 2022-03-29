@@ -44,7 +44,29 @@ def help(update, context):
 
 
 def echo(update, context):
-    update.message.reply_text(update.message.text)
+    startText = "Привет, поделись своим настроением на данный момент:"
+    keyboard = [
+        [
+            InlineKeyboardButton("😁", callback_data='happy'),
+            InlineKeyboardButton("😋", callback_data='sweets'),
+            InlineKeyboardButton("😡", callback_data='angry')
+        ],
+
+        [
+            InlineKeyboardButton("🤒", callback_data='sick'),
+            InlineKeyboardButton("😭", callback_data='cry'),
+            InlineKeyboardButton("😱", callback_data='shook')
+        ], 
+        
+        [
+            InlineKeyboardButton("🍽", callback_data='starved'),
+            InlineKeyboardButton("😖", callback_data='unwell'),
+            InlineKeyboardButton("☕", callback_data='tea')
+        ]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    update.message.reply_text(startText, reply_markup= reply_markup)
+    
 
 
 def error(update, context):
